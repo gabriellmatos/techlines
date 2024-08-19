@@ -4,13 +4,6 @@ import Product from "../models/Product.js";
 const productRoutes = express.Router()
 
 const getProducts = async(req, res) => {
-/*     const products = await Product.find({});
-
-    res.json({
-        products,
-        pagination: {},
-    }); */
-
     const page = parseInt(req.params.page); // 1, 2 or 3
     const perPage = parseInt(req.params.perPage); // 10
 
@@ -28,7 +21,19 @@ const getProducts = async(req, res) => {
 
 };
 
+const getProduct = async (req, res) => {
+    const product = await Product.findById(req.params.id);
+
+    if (product) {
+        res.json(product);
+    } else {
+        res.json(404);
+        throw new Error('Product not found.');
+    }
+}
+
 productRoutes.route('/:page/:perPage').get(getProducts);
 productRoutes.route('/').get(getProducts);
+productRoutes.route('/:id').get(getProduct);
 
 export default productRoutes;

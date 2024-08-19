@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@chakra-ui/layout": "^2.3.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
