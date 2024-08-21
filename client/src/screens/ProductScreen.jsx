@@ -43,6 +43,20 @@ const ProductScreen = () => {
 		}
 	};
 
+	/*const addItem = () => {
+		if (cartItems.some((cartItem) => cartItem.id === id)) {
+			cartItems.find((cartItem) => cartItem.id === id);
+			dispatch(addCartItem(id, amount));
+		} else {
+			dispatch(addCartItem(id, amount));
+		}
+		toast({
+			description: 'Item has been added.',
+			status: 'success',
+			isClosable: true,
+		});
+	};*/
+
 	return (
 		<Wrap spacing='30px' minH='100vh' justify='center'>
 			{loading ? (
@@ -97,7 +111,7 @@ const ProductScreen = () => {
 									<Text>{product.subtitle}</Text>
 									<Text>{product.description}</Text>
 									<Text fontWeight='bold'>Quantity</Text>
-									<Flex w='170px' p='5px' border='1px' borderColor='gray.200' aligItems='center'>
+									<Flex w='170px' p='5px' border='1px' borderColor='gray.200' alignItems='center'>
 										<Button isDisabled={amount <= 1} onClick={() => changeAmount('minus')}>
 											<MinusIcon />
 										</Button>
