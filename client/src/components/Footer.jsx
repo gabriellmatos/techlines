@@ -1,5 +1,5 @@
 import {Button, ButtonGroup, Container, Divider, IconButton, Input, Stack, Text, useColorModeValue as mode, Box, Flex, Icon} from '@chakra-ui/react'
-import {FaGithub, FaLinkedin, FaFacebook, FaGithub} from 'react-icons/fa';
+import {FaGithub, FaLinkedin, FaFacebook} from 'react-icons/fa';
 import {BsPhoneFlip} from 'react-icons/bs';
 
 const Footer = () => (

@@ -80,4 +80,4 @@ export const getProduct = (id) => async (dispatch) => {
 			)
 		);
 	}
-}
+};
