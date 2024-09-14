@@ -4,6 +4,7 @@ import asyncHandler from 'express-async-handler';
 import jwt from 'jsonwebtoken';
 import { sendVerificationEmail } from '../middleware/sendVerificationEmail.js';
 import { sendPasswordResetEmail } from '../middleware/sendPasswordResetEmail.js';
+import { protectRoute } from '../middleware/authMiddleware.js';
 
 const userRoutes = express.Router();
 
@@ -79,6 +80,13 @@ const registerUser = asyncHandler(async (req, res) => {
 
 // Verify Email
 const verifyEmail = asyncHandler(async (req, res) => {
+	const user = req.user;
+	user.active = true;
+	await user.save();
+	// Optional message.
+	res.json('Thanks for activating your account. You can close this window now.');
+
+	/*
 	const token = req.headers.authorization.split(' ')[1];
 
 	try {
@@ -97,6 +105,7 @@ const verifyEmail = asyncHandler(async (req, res) => {
 	} catch (error) {
 		res.status(401).send('E-mail address could not be verified.');
 	}
+	*/
 });
 
 // Password Reset Request
@@ -184,7 +193,7 @@ const googleLogin = asyncHandler(async (req, res) => {
 // POST
 userRoutes.route('/login').post(loginUser);
 userRoutes.route('/register').post(registerUser);
-userRoutes.route('/verify-email').get(verifyEmail);
+userRoutes.route('/verify-email').get(protectRoute, verifyEmail);
 userRoutes.route('/password-reset-request').post(passwordResetRequest);
 userRoutes.route('/password-reset').post(passwordReset);
 userRoutes.route('/google-login').post(googleLogin);
