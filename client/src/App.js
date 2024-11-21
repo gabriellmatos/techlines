@@ -14,6 +14,10 @@ import axios from 'axios';
 import { VStack, Spinner } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import CancelScreen from './screens/CancelScreen';
+import CheckoutScreen from './screens/CheckoutScreen';
+import YourOrderScreen from './screens/YourOrderScreen';
+import SuccessScreen from './screens/SuccessScreen';
 
 function App() {
 	const [googleClient, setGoogleClient] = useState(null);
@@ -44,6 +48,10 @@ function App() {
 							<Route path='/register' element={<RegistrationScreen />} />
 							<Route path='/verify-email/:token' element={<EmailVerificationScreen />} />
 							<Route path='/password-reset/:token' element={<PasswordResetScreen />} />
+							<Route path='/checkout' element={<CheckoutScreen />} />
+							<Route path='/cancel' element={<CancelScreen />} />
+							<Route path='/order-history' element={<YourOrderScreen />} />
+							<Route path='/success' element={<SuccessScreen />} />
 						</Routes>
 					</main>
 					<Footer />
