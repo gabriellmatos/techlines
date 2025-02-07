@@ -5,13 +5,11 @@ import {
 	AlertTitle,
 	Box,
 	Button,
-	Center,
 	Container,
 	FormControl,
 	Heading,
 	Stack,
 	Text,
-	VStack,
 	HStack,
 	useBreakpointValue,
 	useToast,
@@ -19,13 +17,13 @@ import {
 import { Formik } from 'formik';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link as ReactLink, useNavigate, useParams } from 'react-router-dom';
+import { Link as ReactLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import PasswordField from '../components/PasswordField';
-import { register, resetPassword, resetState } from '../redux/actions/userActions';
+import { register, googleLogin } from '../redux/actions/userActions';
 import TextField from '../components/TextField';
 import { FcGoogle } from 'react-icons/fc';
-import { useGoogleLogin, googleLogin } from '@react-oauth/google';
+import { useGoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 
 const RegistrationScreen = () => {
