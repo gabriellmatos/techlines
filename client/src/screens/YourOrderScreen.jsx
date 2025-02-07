@@ -54,7 +54,7 @@ const YourOrdersScreen = () => {
 							<Thead>
 								<Tr>
 									<Th>Order Id</Th>
-									<Th>Oder Date</Th>
+									<Th>Order Date</Th>
 									<Th>Paid Total</Th>
 									<Th>Items</Th>
 									<Th>Print Receipt</Th>
