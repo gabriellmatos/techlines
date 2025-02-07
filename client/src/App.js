@@ -48,7 +48,7 @@ function App() {
 							<Route path='/register' element={<RegistrationScreen />} />
 							<Route path='/verify-email/:token' element={<EmailVerificationScreen />} />
 							<Route path='/password-reset/:token' element={<PasswordResetScreen />} />
-							<Route path='/checkout' element={<CheckoutScreen />} />
+							{/* <Route path='/checkout' element={<CheckoutScreen />} /> */}
 							<Route path='/cancel' element={<CancelScreen />} />
 							<Route path='/order-history' element={<YourOrderScreen />} />
 							<Route path='/success' element={<SuccessScreen />} />

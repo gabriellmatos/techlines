@@ -16,6 +16,7 @@ import {
 	Stack,
 	Text,
 	Wrap,
+	useToast,
 } from '@chakra-ui/react';
 import { BiCheckShield, BiPackage, BiSupport } from 'react-icons/bi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,12 +24,15 @@ import { useParams } from 'react-router-dom';
 import { getProduct } from '../redux/actions/productActions';
 import { useEffect, useState } from 'react';
 import Star from '../components/Star';
+import { addCartItem } from '../redux/actions/cartActions';
 
 const ProductScreen = () => {
 	const [amount, setAmount] = useState(1);
 	const { id } = useParams();
 	const dispatch = useDispatch();
 	const { loading, error, product } = useSelector((state) => state.product);
+	const { cartItems } = useSelector((state) => state.cart);
+	const toast = useToast();
 
 	useEffect(() => {
 		dispatch(getProduct(id));
@@ -43,7 +47,7 @@ const ProductScreen = () => {
 		}
 	};
 
-	/*const addItem = () => {
+	const addItem = () => {
 		if (cartItems.some((cartItem) => cartItem.id === id)) {
 			cartItems.find((cartItem) => cartItem.id === id);
 			dispatch(addCartItem(id, amount));
@@ -55,7 +59,7 @@ const ProductScreen = () => {
 			status: 'success',
 			isClosable: true,
 		});
-	};*/
+	};
 
 	return (
 		<Wrap spacing='30px' minH='100vh' justify='center'>
@@ -123,7 +127,14 @@ const ProductScreen = () => {
 									<Badge fontSize='lg' width='170px' textAlign='center' colorScheme='gray'>
 										In Stock: {product.stock}
 									</Badge>
-									<Button variant='outline' isDisabled={product.stock === 0} colorScheme='cyan' onClick={() => {}}>
+									<Button
+										variant='outline'
+										isDisabled={product.stock === 0}
+										colorScheme='cyan'
+										onClick={() => {
+											addItem(product._id);
+										}}
+									>
 										Add to Cart
 									</Button>
 									<Stack width='270px'>

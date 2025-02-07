@@ -11,7 +11,7 @@ const userRoutes = express.Router();
 
 // TODO: Redefine expiresIn
 const genToken = (id) => {
-	return jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn: '60d' });
+	return jwt.sign({ id }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
 };
 
 // Login
@@ -196,7 +196,7 @@ const getUserOrders = asyncHandler(async (req, res) => {
 	if (orders) {
 		res.json(orders);
 	} else {
-		res.status(404);
+		res.status(404).send('No orders could be found.');
 		throw new Error('No Orders found.');
 	}
 });
