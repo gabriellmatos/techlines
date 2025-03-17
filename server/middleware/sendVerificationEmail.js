@@ -7,7 +7,7 @@ export const sendVerificationEmail = (token, email, name) => {
             <h3>Dear ${name}</h3>
             <p>Thanks for signing up at Tech Lines</p>
             <p>Use the link below to verify your e-mail.</p>
-            <a href="http://localhost:3000/verify-email/${token}">Click here!</a>
+            <a href="https://techlines-ai2s.onrender.com/verify-email/${token}">Click here!</a>
         </body>
     </html>
     `;
