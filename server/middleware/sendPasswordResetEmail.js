@@ -1,4 +1,9 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import nodemailer from 'nodemailer';
+
+const BASE_URL =
+	process.env.NODE_ENV === 'production' ? 'https://techlines-ai2s.onrender.com' : 'http://localhost:3000';
 
 export const sendPasswordResetEmail = (token, email, name) => {
 	const html = `
@@ -6,7 +11,7 @@ export const sendPasswordResetEmail = (token, email, name) => {
         <body>
           <h3>Dear ${name}</h3>
              <p>Please click on the link below to reset your password.</p>
-             <a href="https://techlines-ai2s.onrender.com/password-reset/${token}">Click here!</a>
+             <a href="${BASE_URL}/password-reset/${token}">Click here!</a>
         </body>
     </html>`;
 

@@ -1,4 +1,9 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import nodemailer from 'nodemailer';
+
+const BASE_URL =
+	process.env.NODE_ENV === 'production' ? 'https://techlines-ai2s.onrender.com' : 'http://localhost:3000';
 
 export const sendVerificationEmail = (token, email, name) => {
 	const html = `
@@ -7,7 +12,7 @@ export const sendVerificationEmail = (token, email, name) => {
             <h3>Dear ${name}</h3>
             <p>Thanks for signing up at Tech Lines</p>
             <p>Use the link below to verify your e-mail.</p>
-            <a href="https://techlines-ai2s.onrender.com/verify-email/${token}">Click here!</a>
+            <a href="${BASE_URL}/verify-email/${token}">Click here!</a>
         </body>
     </html>
     `;

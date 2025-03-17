@@ -1,4 +1,4 @@
-import { Button, useToast, Text, Flex, Heading, Container, Box, Skeleton, VStack } from '@chakra-ui/react';
+import { Button, useToast, Text, Heading, Container, Box, Skeleton, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -15,10 +15,13 @@ const PaymentScreen = () => {
 	const { userInfo } = useSelector((state) => state.user);
 	const { cartItems } = useSelector((state) => state.cart);
 
+	const BASE_URL =
+		process.env.NODE_ENV === 'production' ? 'https://techlines-ai2s.onrender.com' : 'http://localhost:5000';
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetch('http://localhost:5000/api/payment', {
+				const response = await fetch(`${BASE_URL}/api/payment`, {
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
 					body: JSON.stringify({
