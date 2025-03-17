@@ -8,6 +8,7 @@ import path from 'path';
 // Routes
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import chargeRoute from './routes/createChargeRoute.js';
 //import stripeRoute from './routes/stripeRoute.js';
 //import orderRoutes from './routes/orderRoutes.js';
 
@@ -18,6 +19,7 @@ app.use(cors());
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/payment', chargeRoute);
 //app.use('/api/checkout', stripeRoute);
 //app.use('/api/orders', orderRoutes);
 
